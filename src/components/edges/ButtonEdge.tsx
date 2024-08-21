@@ -10,8 +10,8 @@ import {
 const buttonStyle = {
   width: 20,
   height: 20,
-  background: "#eee",
-  border: "1px solid #fff",
+  background: "#1a1a1",
+  border: "1px solid #000",
   cursor: "pointer",
   borderRadius: "50%",
   fontSize: "12px",
@@ -61,7 +61,7 @@ export default function ButtonEdge({
           className="nodrag nopan"
         >
           <button style={buttonStyle} onClick={onEdgeClick}>
-            ×
+            x
           </button>
         </div>
       </EdgeLabelRenderer>

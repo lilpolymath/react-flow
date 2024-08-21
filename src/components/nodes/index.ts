@@ -2,6 +2,12 @@ import type { BuiltInNode, Node, NodeTypes } from "@xyflow/react";
 import PositionLoggerNode, {
   type PositionLoggerNode as PositionLoggerNodeType,
 } from "./PositionLoggerNode";
+import StartNode, { type StartNode as StartNodeType } from "./StartNode";
+import EndNode, { type EndNode as EndNodeType } from "./EndNode";
+import ActionNode, { type ActionNode as ActionNodeType } from "./ActionNode";
+import ConditionNode, {
+  type ConditionNode as ConditionNodeType,
+} from "./ConditionNode";
 
 export const initialNodes = [
   {
@@ -27,7 +33,7 @@ export const initialNodes = [
     id: "1",
     type: "data-source",
     data: { label: "Data Source", config: { api: "" } },
-    position: { x: 100, y: 100 },
+    position: { x: 300, y: 0 },
   },
   {
     id: "2",
@@ -35,11 +41,15 @@ export const initialNodes = [
     data: { label: "Transformation", config: { filter: "" } },
     position: { x: 300, y: 100 },
   },
-  { id: "3", data: { label: "Output" }, position: { x: 500, y: 100 } },
+  { id: "3", data: { label: "Output" }, position: { x: 300, y: 200 } },
 ] satisfies Node[];
 
 export const nodeTypes = {
   "position-logger": PositionLoggerNode,
+  "start-node": StartNode,
+  "end-node": EndNode,
+  "action-node": ActionNode,
+  "condition-node": ConditionNode,
 } satisfies NodeTypes;
 
 export const loadNodes = () => {
@@ -47,4 +57,10 @@ export const loadNodes = () => {
   return savedNodes ? JSON.parse(savedNodes) : initialNodes;
 };
 
-export type CustomNodeType = BuiltInNode | PositionLoggerNodeType;
+export type CustomNodeType =
+  | BuiltInNode
+  | PositionLoggerNodeType
+  | StartNodeType
+  | EndNodeType
+  | ActionNodeType
+  | ConditionNodeType;

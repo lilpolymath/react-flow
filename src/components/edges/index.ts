@@ -13,6 +13,8 @@ export const initialEdges = [
   },
   { id: "b->d", source: "b", target: "d", type: "button-edge" },
   { id: "c->d", source: "c", target: "d", animated: true },
+  { id: "1->2", source: "1", target: "2", animated: true },
+  { id: "2->3", source: "2", target: "3", animated: true },
 ] satisfies Edge[];
 
 export const edgeTypes = {

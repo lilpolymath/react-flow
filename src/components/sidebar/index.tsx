@@ -1,11 +1,11 @@
 'use client';
 
-import { Box, Button, Dialog, Flex, Heading, Section, Table, Tabs, Text, TextField } from '@radix-ui/themes';
-import React from 'react'
+import { Box, Button, Dialog, Flex, Heading, Section, Select, Table, Tabs, Text, TextField } from '@radix-ui/themes';
+import React, { useState } from 'react'
 
 type Props = {
 	children: React.ReactNode;
-	addNode: (label: string) => void;
+	addNode: (data: any) => void;
 	nodes: any;
 	edges: any;
 	resetFlow: () => void;
@@ -18,10 +18,7 @@ const Index = ({ children, addNode, nodes, edges, resetFlow }: Props) => {
 
 	return (
 		<Section className="sidebar">
-			<Heading as="h3" style={{
-				// paddingLeft: 10
-			}}>Settings</Heading>
-
+			<Heading as="h3" mb="4">Settings</Heading>
 			<Box mt="4">
 				<Tabs.Root defaultValue="nodes">
 					<Tabs.List>
@@ -31,7 +28,7 @@ const Index = ({ children, addNode, nodes, edges, resetFlow }: Props) => {
 
 					<Box pt="3">
 						<Tabs.Content value="nodes">
-							<Flex direction={'column'} gap="3">
+							<Flex direction={'column'} gap="4">
 
 								<Table.Root>
 									<Table.Header>
@@ -55,7 +52,7 @@ const Index = ({ children, addNode, nodes, edges, resetFlow }: Props) => {
 
 								<Dialog.Root open={open} onOpenChange={setOpen}>
 									<Dialog.Trigger>
-										<Button mt={"3"}>Create a Node</Button>
+										<Button variant='outline' mt={"3"}>Create a Node</Button>
 									</Dialog.Trigger>
 
 									<Dialog.Content maxWidth="450px">
@@ -86,7 +83,7 @@ const Index = ({ children, addNode, nodes, edges, resetFlow }: Props) => {
 											</Dialog.Close>
 
 											<Button disabled={label.length < 1} onClick={() => {
-												addNode && addNode(label);
+												addNode && addNode({ label });
 												setOpen(false)
 											}}>
 												Add Node
@@ -120,18 +117,11 @@ const Index = ({ children, addNode, nodes, edges, resetFlow }: Props) => {
 								</Table.Body>
 							</Table.Root>
 						</Tabs.Content>
-
-
 					</Box>
 				</Tabs.Root>
 
-				<Button color='red' style={{
-					width: "100%",
-					marginTop: "20px"
-				}} onClick={() => resetFlow()}>Reset</Button>
-
-				{/* {children} */}
 			</Box>
+			{children}
 		</Section>
 	)
 }
