@@ -2,6 +2,7 @@ import type { Node, NodeProps } from "@xyflow/react";
 import { Handle, Position } from "@xyflow/react";
 
 export type PositionLoggerNodeData = {
+  config: any;
   label?: string;
 };
 

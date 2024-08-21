@@ -25,11 +25,13 @@ export const initialNodes = [
   },
   {
     id: "1",
+    type: "data-source",
     data: { label: "Data Source", config: { api: "" } },
     position: { x: 100, y: 100 },
   },
   {
     id: "2",
+    type: "transformation",
     data: { label: "Transformation", config: { filter: "" } },
     position: { x: 300, y: 100 },
   },
