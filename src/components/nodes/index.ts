@@ -41,7 +41,12 @@ export const initialNodes = [
     data: { label: "Transformation", config: { filter: "" } },
     position: { x: 300, y: 100 },
   },
-  { id: "3", data: { label: "Output" }, position: { x: 300, y: 200 } },
+  {
+    id: "3",
+    type: "output",
+    data: { label: "Output" },
+    position: { x: 300, y: 200 },
+  },
 ] satisfies Node[];
 
 export const nodeTypes = {
@@ -53,14 +58,18 @@ export const nodeTypes = {
 } satisfies NodeTypes;
 
 export const loadNodes = () => {
-  const savedNodes = localStorage.getItem("nodes");
-  return savedNodes ? JSON.parse(savedNodes) : initialNodes;
+  if (typeof window !== "undefined") {
+    const savedNodes = localStorage.getItem("nodes");
+    return savedNodes ? JSON.parse(savedNodes) : initialNodes;
+  }
+
+  return initialNodes;
 };
 
 export type CustomNodeType =
-  | BuiltInNode
+  | ConditionNodeType
   | PositionLoggerNodeType
   | StartNodeType
   | EndNodeType
   | ActionNodeType
-  | ConditionNodeType;
+  | BuiltInNode;

@@ -6,11 +6,14 @@ export type ConditionNodeData = {
   condition?: string;
 };
 
-export type ConditionNode = Node<ConditionNodeData>;
+export type ConditionNode = Node<ConditionNodeData, "condition-node">;
 
 export default function ConditionNode({ data }: NodeProps<ConditionNode>) {
   return (
-    <div className="react-flow__node-default" style={{ padding: 10, backgroundColor: 'blue', borderRadius: 5 }}>
+    <div
+      className="react-flow__node-default"
+      style={{ padding: 10, backgroundColor: "blue", borderRadius: 5 }}
+    >
       <strong>Condition Node</strong>
       {data.label && <div>{data.label}</div>}
       {data.condition && <div>Condition: {data.condition}</div>}

@@ -6,7 +6,10 @@ export type PositionLoggerNodeData = {
   label?: string;
 };
 
-export type PositionLoggerNode = Node<PositionLoggerNodeData>;
+export type PositionLoggerNode = Node<
+  PositionLoggerNodeData,
+  "position-logger"
+>;
 
 export default function PositionLoggerNode({
   positionAbsoluteX,

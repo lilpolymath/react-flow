@@ -22,8 +22,11 @@ export const edgeTypes = {
 } satisfies EdgeTypes;
 
 export const loadEdges = () => {
-  const savedEdges = localStorage.getItem("edges");
-  return savedEdges ? JSON.parse(savedEdges) : initialEdges;
+  if (typeof window !== "undefined") {
+    const savedEdges = localStorage.getItem("edges");
+    return savedEdges ? JSON.parse(savedEdges) : initialEdges;
+  }
+  return initialEdges;
 };
 
 export type CustomEdgeType = BuiltInEdge | ButtonEdgeType;
