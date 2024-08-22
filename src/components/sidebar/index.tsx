@@ -28,7 +28,9 @@ const selector = (state: StoreState) => ({
 });
 
 const Index = ({ children }: Props) => {
-  const { nodes, edges, addNode } = useStore(useShallow(selector));
+  const { nodes, edges, addNode, selectedNode } = useStore(
+    useShallow(selector)
+  );
 
   const [label, setLabel] = useState("New Node");
   const [open, setOpen] = useState(false);
@@ -60,12 +62,12 @@ const Index = ({ children }: Props) => {
                     {nodes.map((node: any) => (
                       <Table.Row
                         key={node.id}
-                        // style={{
-                        //   background:
-                        //     selectedNode && selectedNode.id === node.id
-                        //       ? "rgba(255, 255, 255, 0.1)"
-                        //       : "none",
-                        // }}
+                        style={{
+                          background:
+                            selectedNode && selectedNode.id === node.id
+                              ? "rgba(255, 255, 255, 0.1)"
+                              : "none",
+                        }}
                       >
                         <Table.Cell>{node.id}</Table.Cell>
                         <Table.Cell>{node.data.label}</Table.Cell>
